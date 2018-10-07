@@ -1,0 +1,77 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+   
+
+    <link href="bower_components/vis/dist/vis.css" rel="stylesheet" type="text/css" />
+
+
+    <style type="text/css">
+        #mynetwork {
+            width: auto;
+            height: 500px;
+            border: 1px solid lightgray;
+        }
+        #mynetwork1 {
+            width: auto;
+            height: 500px;
+            border: 1px solid lightgray;
+        }
+
+        body {
+            margin: auto 10%;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td style="width: 43%">
+                <div id="mynetwork"></div>
+            </td>
+            <td style="width: 42%">
+                <div id="mynetwork1"></div>
+            </td>
+            <td>
+                <div>
+                    <label>Кол-во муравьев:</label>
+                    <input id="antCount" type="number" value="100" />
+                    <label>Кол-во итераций:</label>
+                    <input id="itrCount" type="number" value="10" />
+                    <label>alfa:</label>
+                    <input id="alfa" type="number" value="0" />
+                    <label>beta:</label>
+                    <input id="beta" type="number" value="10" />
+                    <label>Испарение:</label>
+                    <input id="evaporation" type="number" value="0.01" />
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ul id="list"></ul>
+            </td>
+        </tr>
+    </table>
+    
+    <input type="button" value="Запуск" onclick="run()" />
+    <script type="text/javascript" src="bower_components/vis/dist/vis.js"></script>
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+
+    <script type="text/javascript" src="ts/core.js"></script>
+
+    <script>
+
+        function run() {
+            var itrCount = parseInt($("#itrCount").val());
+            var antCount = parseInt($("#antCount").val());
+            var alfa = parseFloat($("#alfa").val());
+            var beta = parseFloat($("#beta").val());
+            var evaporation = parseFloat($("#evaporation").val());
+            var sales = new TravelingSalesman(antCount, itrCount, evaporation, alfa, beta);
+            sales.run();
+        };
+
+    </script>
+</body>
+</html>
